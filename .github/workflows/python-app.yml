@@ -22,8 +22,14 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y chromium-browser
 
       - name: Install Chromium WebDriver
-        run: sudo apt-get install -y chromium-chromedriver
-
+         run: |
+          LATEST=$(wget -q -O - https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE)
+          wget https://storage.googleapis.com/chrome-for-testing-public/$LATEST/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          cd chromedriver-linux64
+          sudo mv chromedriver /usr/local/bin/
+          sudo chmod +x /usr/local/bin/chromedriver
+          
       - name: Install dependencies
         run: pip install selenium
 
