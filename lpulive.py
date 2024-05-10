@@ -20,7 +20,7 @@ username_input.send_keys("12105022")
 password_input = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "inputPassword")))
 password_input.send_keys("19072003Chang@")
 
-# Click the login button
+# Click the login butto
 login_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'btn-next')]")))
 login_button.click()
 
