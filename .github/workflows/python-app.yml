@@ -1,0 +1,31 @@
+name: Run Selenium Script
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install Chrome browser
+        run: sudo apt-get update && sudo apt-get install -y chromium-browser
+
+      - name: Install Chromium WebDriver
+        run: sudo apt-get install -y chromium-chromedriver
+
+      - name: Install dependencies
+        run: pip install selenium
+
+      - name: Run Selenium script
+        run: python lpulive.py
